@@ -16,12 +16,10 @@ public class ConsoleRun implements Runnable {
 		
 		if(quantity == 0) {
 			System.out.println("Then why even bother, dickhead");
-			return;
 		}
 		if(quantity == 1) {
 			System.out.println("Ok then.");
 			BanolliGenerator.returnOrder(quantity, false);
-			return;
 		}
 		if(quantity > 1) {
 			System.out.println("Would you accept duplicates?");
@@ -29,12 +27,10 @@ public class ConsoleRun implements Runnable {
 			if(decision) {
 				System.out.println("There you go");
 				BanolliGenerator.returnOrder(quantity, true);
-				return;
 			}
 			else {
 				System.out.println("Ok");
 				BanolliGenerator.returnOrder(quantity, false);
-				return;
 			}
 		}
 
