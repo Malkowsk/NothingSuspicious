@@ -12,7 +12,7 @@ import java.util.Set;
 public class BanolliGenerator {
 	static Random rand = new Random();
 	
-	public static Pizza returnPizza() {
+	public static Pizza randomPizza() {
 			
 		Pizza[] pizzas = Pizza.values();
 		int index = rand.nextInt(pizzas.length);
@@ -23,20 +23,20 @@ public class BanolliGenerator {
 	public static ArrayList<Pizza> withDuplicates(int quantity) {
 		ArrayList<Pizza> pizzas = new ArrayList<>(quantity);			
 		for(int i = 0; i<quantity; i++) 
-			pizzas.add(returnPizza());
+			pizzas.add(randomPizza());
 		return pizzas;
 	}
 	
 	public static Set<Pizza> withoutDuplicates(int quantity) {
 		Set<Pizza> pizzas = new HashSet<>(quantity);
 		while(pizzas.size()<quantity) {
-			pizzas.add(returnPizza());
+			pizzas.add(randomPizza());
 		}
 		return pizzas;
 	}
 	
 
-	public static void getPizzaList(int quantity, boolean allowDuplicates) {
+	public static void returnOrder(int quantity, boolean allowDuplicates) {
 		
 		Collection<Pizza> pizzas;
 		
@@ -54,9 +54,9 @@ public class BanolliGenerator {
 	}
 	
 	public static void main(String[] args) {
-		getPizzaList(5, true);
+		returnOrder(5, true);
 		System.out.println();
-		getPizzaList(7, false);
+		returnOrder(7, false);
 	}
 		
 		//Pizza p1 = returnPizza();
