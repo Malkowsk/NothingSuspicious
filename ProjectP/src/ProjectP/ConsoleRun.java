@@ -11,39 +11,53 @@ public class ConsoleRun implements Runnable {
 	public void run() {
 		System.out.println("Welcome, dickhead");
 		System.out.println("Please, tell me the number of round objects you want to stuff into your mouth doday");
+		int quantity;
+		String strLine;
 		while(true) {
 			try {
-				String strLine = in.readLine();
-				int quantity = Integer.valueOf(strLine);
-				if(quantity == 0) {
-					System.out.println("Then why even bother, dickhead");
-					System.exit(0);
-				}
-				if(quantity == 1) {
-					System.out.println("Ok then.");
-					BanolliGenerator.returnOrder(quantity, false);
-					System.exit(0);
-				}
-				if(quantity > 1) {
-					System.out.println("Would you accept duplicates?");
-					strLine = in.readLine();
-					if(strLine.equalsIgnoreCase("yes")) {
-						System.out.println("There you go");
-						BanolliGenerator.returnOrder(quantity, true);
-						System.exit(0);
-					}
-					else if(strLine.equalsIgnoreCase("no")) {
-						System.out.println("Ok");
-						BanolliGenerator.returnOrder(quantity, false);
-						System.exit(0);
-					}
-				}
+				strLine = in.readLine();
+				quantity = Integer.valueOf(strLine);
+				break;
 			} catch (IOException e) {
-				e.printStackTrace();
+				System.out.println("Ok, i see it was a hard task for you. Try again. Nuuummmbeeerr");
 			}
-			
 		}
+		
+		if(quantity == 0) {
+			System.out.println("Then why even bother, dickhead");
+			return;
+		}
+		if(quantity == 1) {
+			System.out.println("Ok then.");
+			BanolliGenerator.returnOrder(quantity, false);
+			return;
+		}
+		if(quantity > 1) {
+			System.out.println("Would you accept duplicates?");
+			while(true) { 
+				try {
+					strLine = in.readLine();
+					if(strLine.equalsIgnoreCase("yes") || strLine.equalsIgnoreCase("no"))
+						break;
+					throw new IOException();
+				} catch(IOException e) {
+					System.out.println("Write yes or no you pretentious prick");
+				}
+			}
+			if(strLine.equalsIgnoreCase("yes")) {
+				System.out.println("There you go");
+				BanolliGenerator.returnOrder(quantity, true);
+				return;
+			}
+			else if(strLine.equalsIgnoreCase("no")) {
+				System.out.println("Ok");
+				BanolliGenerator.returnOrder(quantity, false);
+				return;
+			}
+		}
+
 	}
+
 	
 	public static void main(String[] args) {
 		ConsoleRun d = new ConsoleRun();
