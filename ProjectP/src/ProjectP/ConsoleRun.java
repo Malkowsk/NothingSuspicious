@@ -12,7 +12,7 @@ public class ConsoleRun implements Runnable {
 		System.out.println("Welcome, dickhead");
 		System.out.println("Please, tell me the number of round objects you want to stuff into your mouth doday");
 		int quantity = AuxilliaryMethodHolder.getPizzasQuantity(in);
-		String strLine;
+		
 		
 		if(quantity == 0) {
 			System.out.println("Then why even bother, dickhead");
